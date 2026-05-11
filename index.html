@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bornholm für Väter – Transformation in 8 Stunden</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HYWNJ94D4H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HYWNJ94D4H');
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS - Animate On Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out; }
+        .animation-delay-200 { animation-delay: 0.2s; }
+        .animation-delay-400 { animation-delay: 0.4s; }
+        .animation-delay-600 { animation-delay: 0.6s; }
+        .animate-bounce { animation: bounce 2s infinite; }
+        
+        /* Parallax Effect */
+        .parallax-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Transformation Journey */
+        .journey-container {
+            position: relative;
+            padding: 60px 0;
+        }
+        
+        .journey-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 30px;
+        }
+        
+        .journey-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .journey-icon {
+            flex-shrink-0;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        
+        .journey-content {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #10b981;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .journey-step:nth-child(even) .journey-content {
+            border-left: none;
+            border-right: 4px solid #10b981;
+        }
+        
+        .journey-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        
+        .journey-text {
+            color: #6b7280;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Arrow between steps */
+        .journey-arrow {
+            text-align: center;
+            font-size: 30px;
+            color: #10b981;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+        
+        /* Scroll-triggered animations */
+        [data-aos] {
+            opacity: 0;
+        }
+        
+        [data-aos].aos-animate {
+            opacity: 1;
+        }
+        
+        /* Hero text parallax effect */
+        .hero-text {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .scroll-fade {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-stone-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-stone-900/95 backdrop-blur-sm z-50 border-b border-stone-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <span class="text-white font-bold text-lg">🏔️ Bornholm für Väter</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-stone-300 hover:text-white transition-colors">Home</a>
+                    <a href="#problem" class="text-stone-300 hover:text-white transition-colors">Das Problem</a>
+                    <a href="#journey" class="text-stone-300 hover:text-white transition-colors">Die Transformation</a>
+                    <a href="#angebot" class="text-stone-300 hover:text-white transition-colors">Die Lösung</a>
+                    <a href="#ablauf" class="text-stone-300 hover:text-white transition-colors">Ablauf</a>
+                    <a href="#vorgespräch" class="text-stone-300 hover:text-white transition-colors">Vorgespräch</a>
+                </div>
+                <button onclick="document.getElementById('leadModal').classList.remove('hidden')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition-colors font-medium text-sm md:text-base" title="Hol dir den kostenlosen Kompass für Väter im Sturm">
+                    Gratis: Kompass für Väter
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Parallax -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden pt-16 parallax-hero" style="background-image: url('hero-cliffs.jpg');">
+        <div class="absolute inset-0 bg-gradient-to-b from-stone-900/70 via-stone-900/50 to-stone-900/70"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center hero-text scroll-fade">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in-up" data-aos="fade-up" data-aos-duration="1000">
+                Raus aus dem Kopf.<br/>Rein in die Natur.
+            </h1>
+            <p class="text-xl md:text-2xl text-stone-200 mb-4 animate-fade-in-up animation-delay-200" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                Finde wieder Verbindung – zu dir und deinem Kind.
+            </p>
+            <p class="text-lg md:text-xl text-stone-300 mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-400" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                1 Tag. 8 Stunden. Naturbegleitung auf Bornholm. Keine Therapie. Kein Seminar. 
+                Nur die Chance, als anderer Mensch zurückzukommen.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-600" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                <a href="#vorgespräch" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 inline-flex items-center justify-center">
+                    Vorgespräch sichern →
+                </a>
+                <a href="#problem" class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all backdrop-blur-sm border border-white/30">
+                    Mehr erfahren
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
+                <div class="w-1 h-3 bg-white/50 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-emerald-700 to-emerald-600" data-aos="fade-up" data-aos-duration="800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="flex-1 text-white">
+                    <div class="flex items-center space-x-3 mb-4" data-aos="slide-right" data-aos-duration="800">
+                        <span class="text-3xl">🧭</span>
+                        <h3 class="text-3xl font-bold">Der Kompass für Väter im Sturm</h3>
+                    </div>
+                    <p class="text-emerald-50 text-lg mb-4 leading-relaxed" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                        Du fühlst dich orientierungslos nach der Trennung? Dieser kostenlose Guide gibt dir 
+                        <strong>5 praktische Schritte zur inneren Stärke</strong> – bevor du das Vorgespräch führst.
+                    </p>
+                    <ul class="space-y-2 text-emerald-50">
+                        <li class="flex items-start space-x-2" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                            <span class="text-emerald-200 flex-shrink-0 mt-0.5">✓</span>
+                            <span>Ehrliche Bestandsaufnahme deiner Situation</span>
+                        </li>
+                        <li class="flex items-start space-x-2" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+                            <span class="text-emerald-200 flex-shrink-0 mt-0.5">✓</span>
+                            <span>Deine Anker-Werte als Vater definieren</span>
+                        </li>
+                        <li class="flex items-start space-x-2" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+                            <span class="text-emerald-200 flex-shrink-0 mt-0.5">✓</span>
+                            <span>Verbindung zu deinen Kindern stärken</span>
+                        </li>
+                        <li class="flex items-start space-x-2" data-aos="fade-up" data-aos-delay="500" data-aos-duration="800">
+                            <span class="text-emerald-200 flex-shrink-0 mt-0.5">✓</span>
+                            <span>Die heilende Kraft der Natur nutzen</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex-shrink-0" data-aos="zoom-in" data-aos-duration="800">
+                    <a href="kompass-vaeter-im-sturm.pdf" download class="bg-white text-emerald-700 px-8 py-5 rounded-xl text-lg font-bold transition-all transform hover:scale-105 shadow-2xl hover:shadow-emerald-900/50 flex items-center space-x-3 inline-flex">
+                        <span>Jetzt kostenlos herunterladen</span>
+                        <span>→</span>
+                    </a>
+                    <p class="text-emerald-100 text-sm text-center mt-3">
+                        100% kostenlos • Sofort als PDF • Keine Verpflichtung
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6" data-aos="fade-up" data-aos-duration="800">
+                    Der Schmerz, den du kennst
+                </h2>
+                <div class="w-20 h-1 bg-emerald-600 mx-auto mb-8" data-aos="zoom-in" data-aos-duration="600"></div>
+                <p class="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    Trennung. Druck. Leere. Der Verlust der Verbindung zu deinen Kindern. 
+                    Du funktionierst, aber du lebst nicht. Dein Kopf ist voller Gedanken, dein Körper erstarrt.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-8 bg-stone-50 rounded-xl border border-stone-200" data-aos="fade-up" data-aos-delay="0" data-aos-duration="800">
+                    <div class="text-5xl mb-4">🧠</div>
+                    <h3 class="text-2xl font-bold text-stone-900 mb-3">Kopf im Kreis</h3>
+                    <p class="text-stone-600 leading-relaxed">
+                        Gedanken, die sich drehen und drehen. Nachts wach. Tagsüber abwesend. 
+                        Du kannst nicht abschalten, nicht ankommen, nicht loslassen.
+                    </p>
+                </div>
+                <div class="text-center p-8 bg-stone-50 rounded-xl border border-stone-200" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                    <div class="text-5xl mb-4">💔</div>
+                    <h3 class="text-2xl font-bold text-stone-900 mb-3">Verlust zur Verbindung</h3>
+                    <p class="text-stone-600 leading-relaxed">
+                        Die Distanz zu deinen Kindern wächst. Du weißt nicht, wie du wieder Vater sein kannst. 
+                        Die Trennung hat alles verändert.
+                    </p>
+                </div>
+                <div class="text-center p-8 bg-stone-50 rounded-xl border border-stone-200" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    <div class="text-5xl mb-4">⚡</div>
+                    <h3 class="text-2xl font-bold text-stone-900 mb-3">Körper erstarrt</h3>
+                    <p class="text-stone-600 leading-relaxed">
+                        Du spürst dich nicht mehr. Keine Kraft. Keine Klarheit. 
+                        Nur Müdigkeit und das Gefühl, nicht mehr du selbst zu sein.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformation Journey Section -->
+    <section id="journey" class="py-20 bg-gradient-to-b from-stone-50 to-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6" data-aos="fade-up" data-aos-duration="800">
+                    Deine Transformation
+                </h2>
+                <div class="w-20 h-1 bg-emerald-600 mx-auto mb-8" data-aos="zoom-in" data-aos-duration="600"></div>
+                <p class="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    Wie sich dein innerer Zustand während des Tages auf Bornholm verändert
+                </p>
+            </div>
+
+            <div class="journey-container">
+                <!-- Step 1: Vorher -->
+                <div class="journey-step" data-aos="fade-up" data-aos-duration="800">
+                    <div class="journey-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                        🧠
+                    </div>
+                    <div class="journey-content">
+                        <div class="journey-title">Vorher: Kopf voller Gedanken</div>
+                        <div class="journey-text">
+                            Du kommst an mit Gedanken, die sich im Kreis drehen. Trennung, Verlust, Angst. 
+                            Dein Körper ist angespannt, dein Geist überfordert. Du funktionierst, aber du lebst nicht.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="journey-arrow" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">↓</div>
+
+                <!-- Step 2: Ankunft -->
+                <div class="journey-step" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+                    <div class="journey-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        🌅
+                    </div>
+                    <div class="journey-content">
+                        <div class="journey-title">Ankunft: Erste Erdung</div>
+                        <div class="journey-text">
+                            Du spürst die Kraft der Insel. Die Klippen, der Wind, das Meer. 
+                            Dein Körper beginnt zu entspannen. Die erste Stille tritt ein.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="journey-arrow" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">↓</div>
+
+                <!-- Step 3: Wanderung -->
+                <div class="journey-step" data-aos="fade-up" data-aos-delay="500" data-aos-duration="800">
+                    <div class="journey-icon" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                        🥾
+                    </div>
+                    <div class="journey-content">
+                        <div class="journey-title">Wanderung: Körper wacht auf</div>
+                        <div class="journey-text">
+                            Mit jedem Schritt spürst du deinen Körper wieder. Die Gedanken werden weniger. 
+                            Der weite Blick über die Ostsee öffnet deinen Geist. Du atmest durch.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="journey-arrow" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">↓</div>
+
+                <!-- Step 4: Feuer & Gespräche -->
+                <div class="journey-step" data-aos="fade-up" data-aos-delay="700" data-aos-duration="800">
+                    <div class="journey-icon" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
+                        🔥
+                    </div>
+                    <div class="journey-content">
+                        <div class="journey-title">Feuer: Echte Verbindung</div>
+                        <div class="journey-text">
+                            Am Feuer mit anderen Vätern fällt die Maske. Du wirst gehört, verstanden, gesehen. 
+                            Die Einsamkeit weicht einer neuen Bruderschaft. Du spürst: Du bist nicht allein.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="journey-arrow" data-aos="fade-up" data-aos-delay="800" data-aos-duration="800">↓</div>
+
+                <!-- Step 5: Nachher -->
+                <div class="journey-step" data-aos="fade-up" data-aos-delay="900" data-aos-duration="800">
+                    <div class="journey-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        ✨
+                    </div>
+                    <div class="journey-content">
+                        <div class="journey-title">Nachher: Klarer Kopf, starker Körper</div>
+                        <div class="journey-text">
+                            Du fährst nach Hause als anderer Mensch. Dein Kopf ist klar. Dein Körper ist lebendig. 
+                            Du weißt, wer du als Mann und Vater bist. Du bist bereit für das, was kommt.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="angebot" class="py-20 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-stone-800"></div>
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up" data-aos-duration="800">
+                    Hier passiert Veränderung
+                </h2>
+                <div class="w-20 h-1 bg-emerald-500 mx-auto mb-8" data-aos="zoom-in" data-aos-duration="600"></div>
+                <p class="text-xl text-stone-300 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    1 Tag auf Bornholm. 8 Stunden in der Natur. Kein Seminar, kein Coaching – nur echte Naturbegleitung. 
+                    Du kommst als anderer Mensch zurück.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4" data-aos="slide-right" data-aos-duration="800">
+                        <span class="text-emerald-500 flex-shrink-0 mt-1 text-2xl">🔥</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Kopf aus – Körper rein</h3>
+                            <p class="text-stone-300">
+                                Die Natur bringt dich aus dem Denken in die Gegenwart. Mit jedem Schritt auf Bornholms Klippen 
+                                spürst du wieder deinen Körper, deine Kraft, dein Leben.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4" data-aos="slide-right" data-aos-delay="100" data-aos-duration="800">
+                        <span class="text-emerald-500 flex-shrink-0 mt-1 text-2xl">🔥</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Ehrliche Gespräche mit anderen Vätern</h3>
+                            <p class="text-stone-300">
+                                Am Feuer, unter dem Sternenhimmel, fällt die Maske. Du triffst Männer, die verstehen, 
+                                was du durchmachst. Keine Ratschläge, nur echte Verbindung.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4" data-aos="slide-right" data-aos-delay="200" data-aos-duration="800">
+                        <span class="text-emerald-500 flex-shrink-0 mt-1 text-2xl">🔥</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Alleinzeit für deine Klarheit</h3>
+                            <p class="text-stone-300">
+                                Momente der Stille, in denen du nur dem Wind und deinem Atem lauschst. 
+                                In dieser Stille findest du die Antworten, die du suchst.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-emerald-900/30 border border-emerald-700 p-8 rounded-xl" data-aos="slide-left" data-aos-duration="800">
+                    <h3 class="text-2xl font-bold mb-6">Das Versprechen</h3>
+                    <p class="text-emerald-50 text-lg mb-6 italic">
+                        "Ich komme als anderer Mensch zurück."
+                    </p>
+                    <p class="text-stone-300 leading-relaxed">
+                        Du wirst nicht alle Probleme lösen in 8 Stunden. Aber du wirst wieder spüren, 
+                        wer du als Mann und Vater wirklich bist. Du wirst Klarheit haben. 
+                        Und du wirst wissen, dass du nicht allein bist.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bornholm Section -->
+    <section id="ablauf" class="py-20 bg-stone-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6" data-aos="fade-up" data-aos-duration="800">
+                    Bornholm – Die Bühne für deine Transformation
+                </h2>
+                <div class="w-20 h-1 bg-emerald-600 mx-auto mb-8" data-aos="zoom-in" data-aos-duration="600"></div>
+                <p class="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    Spektakuläre Klippen. Raue Natur. Das Rauschen der Ostsee. 
+                    Bornholm ist nicht nur schön – hier passiert Veränderung.
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-2xl border border-stone-200" data-aos="fade-up" data-aos-duration="800">
+                <img src="wanderkarte.jpg" alt="Bornholm Karte" class="w-full h-auto rounded-lg mb-8" />
+                <div class="grid md:grid-cols-2 gap-8 text-stone-700">
+                    <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                        <h3 class="font-bold text-xl mb-2 text-stone-900">🌅 Morgens: Ankunft & Erdung</h3>
+                        <p>Du kommst an und spürst sofort die Kraft der Insel. Die Klippen von Bornholm – 
+                        bis zu 56 Meter hoch – geben dir einen ersten Eindruck von Größe und Kraft. 
+                        Wir starten mit einem Ankerings-Ritual.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                        <h3 class="font-bold text-xl mb-2 text-stone-900">🥾 Tagsüber: Der Weg der Klarheit</h3>
+                        <p>Wir wandern entlang der Klippen. Jeder Schritt bringt dich näher zu dir selbst. 
+                        Der weite Blick über die Ostsee öffnet deinen Geist. Wir machen Pausen für Stille und Reflexion.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+                        <h3 class="font-bold text-xl mb-2 text-stone-900">🔥 Nachmittags: Tiefe & Verbindung</h3>
+                        <p>Wir sitzen zusammen – andere Väter, ein Feuer, ehrliche Gespräche. 
+                        Hier teilst du, was wirklich zählt. Hier wirst du gehört. Keine Urteile, nur Verständnis.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+                        <h3 class="font-bold text-xl mb-2 text-stone-900">🌅 Abends: Rückkehr & Erkenntnis</h3>
+                        <p>Der Tag endet mit Stille und Reflexion. Du packst deine Erkenntnisse ein. 
+                        Du fährst als anderer Mensch nach Hause – mit Klarheit, Kraft und neuer Verbindung zu dir selbst.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="stimmen" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6" data-aos="fade-up" data-aos-duration="800">
+                    Stimmen der Väter, die den Weg gingen
+                </h2>
+                <div class="w-20 h-1 bg-emerald-600 mx-auto mb-8" data-aos="zoom-in" data-aos-duration="600"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-stone-50 p-8 rounded-xl border border-stone-200 transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-duration="800">
+                    <p class="text-stone-700 text-lg italic mb-6 leading-relaxed">"Ich bin mit vollem Kopf angekommen und bin mit einem klaren Herzen gegangen. 
+                    Die Natur hat mir meine Kraft zurückgegeben."</p>
+                    <div>
+                        <p class="font-bold text-stone-900">Markus, 37</p>
+                        <p class="text-sm text-stone-500">Vater von zwei Kindern, getrennt seit 2 Jahren</p>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-8 rounded-xl border border-stone-200 transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                    <p class="text-stone-700 text-lg italic mb-6 leading-relaxed">"Am Feuer mit den anderen Männern habe ich verstanden, dass ich nicht allein bin. 
+                    Das hat alles verändert."</p>
+                    <div>
+                        <p class="font-bold text-stone-900">Thomas, 39</p>
+                        <p class="text-sm text-stone-500">Vater, kämpft um die Verbindung zu seinen Kindern</p>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-8 rounded-xl border border-stone-200 transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    <p class="text-stone-700 text-lg italic mb-6 leading-relaxed">"Ich dachte, ich müsste stark sein. Hier habe ich gelernt, dass wahre Stärke 
+                    darin liegt, auch schwach sein zu dürfen."</p>
+                    <div>
+                        <p class="font-bold text-stone-900">Andreas, 42</p>
+                        <p class="text-sm text-stone-500">Vater und Unternehmer in Krise</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Whom Section -->
+    <section id="fuer-wen" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6" data-aos="fade-up" data-aos-duration="800">
+                        Bist du bereit?
+                    </h2>
+                    <div class="w-20 h-1 bg-emerald-600 mb-8" data-aos="zoom-in" data-aos-duration="600"></div>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3" data-aos="slide-right" data-aos-duration="800">
+                            <span class="text-emerald-600 flex-shrink-0 mt-1 text-2xl">✓</span>
+                            <p class="text-lg text-stone-700">Du spürst, dass es so nicht weitergehen kann.</p>
+                        </div>
+                        <div class="flex items-start space-x-3" data-aos="slide-right" data-aos-delay="100" data-aos-duration="800">
+                            <span class="text-emerald-600 flex-shrink-0 mt-1 text-2xl">✓</span>
+                            <p class="text-lg text-stone-700">Du willst wieder spüren, wer du wirklich bist.</p>
+                        </div>
+                        <div class="flex items-start space-x-3" data-aos="slide-right" data-aos-delay="200" data-aos-duration="800">
+                            <span class="text-emerald-600 flex-shrink-0 mt-1 text-2xl">✓</span>
+                            <p class="text-lg text-stone-700">Du brauchst Verbindung – zu dir selbst und zu deinen Kindern.</p>
+                        </div>
+                        <div class="flex items-start space-x-3" data-aos="slide-right" data-aos-delay="300" data-aos-duration="800">
+                            <span class="text-emerald-600 flex-shrink-0 mt-1 text-2xl">✓</span>
+                            <p class="text-lg text-stone-700">Du bist bereit, ehrlich in den Spiegel zu schauen.</p>
+                        </div>
+                    </div>
+                    <div class="bg-emerald-50 border-l-4 border-emerald-600 p-6 rounded-r-lg" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+                        <p class="text-stone-700 font-medium">
+                            <strong>Dann ist dies dein Zeichen.</strong> Die Plätze sind begrenzt. 
+                            Nur für Männer, die es ernst meinen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="py-20 bg-stone-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up" data-aos-duration="800">
+                    Die Details: Was dich erwartet
+                </h2>
+                <div class="w-20 h-1 bg-emerald-500 mx-auto mb-8" data-aos="zoom-in" data-aos-duration="600"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div class="bg-stone-800 p-8 rounded-xl border border-stone-700" data-aos="fade-up" data-aos-duration="800">
+                    <h3 class="text-2xl font-bold mb-4">📍 Ort</h3>
+                    <p class="text-stone-300 text-lg">
+                        <strong>Bornholm, Dänemark</strong><br/>
+                        Die wildeste Insel der Ostsee. Spektakuläre Klippen, raue Natur, das Rauschen des Meeres. 
+                        Hier findest du die Kraft und Klarheit, die du brauchst.
+                    </p>
+                </div>
+
+                <div class="bg-stone-800 p-8 rounded-xl border border-stone-700" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                    <h3 class="text-2xl font-bold mb-4">👥 Gruppe</h3>
+                    <p class="text-stone-300 text-lg">
+                        <strong>Maximal 8 Männer</strong><br/>
+                        Klein genug für echte Tiefe. Groß genug für echte Bruderschaft. 
+                        Jeder wird gesehen, jeder wird gehört.
+                    </p>
+                </div>
+
+                <div class="bg-stone-800 p-8 rounded-xl border border-stone-700" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    <h3 class="text-2xl font-bold mb-4">🧭 Dauer</h3>
+                    <p class="text-stone-300 text-lg">
+                        <strong>1 Tag / 8 Stunden</strong><br/>
+                        Morgens Ankunft, abends Rückkehr. Intensive Naturbegleitung ohne lange Abwesenheit von deinen Kindern. 
+                        Volle Wirkung in komprimierter Zeit.
+                    </p>
+                </div>
+
+                <div class="bg-stone-800 p-8 rounded-xl border border-stone-700" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+                    <h3 class="text-2xl font-bold mb-4">❤️ Investition</h3>
+                    <p class="text-stone-300 text-lg">
+                        <strong>€497</strong><br/>
+                        Inklusive Naturbegleitung, Verpflegung, Feuer und ehrliche Gespräche. 
+                        Das ist eine Investition in dich selbst.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-emerald-900/30 border border-emerald-700 p-8 rounded-xl" data-aos="fade-up" data-aos-duration="800">
+                <h3 class="text-2xl font-bold mb-6 text-center">Im Preis enthalten:</h3>
+                <div class="grid md:grid-cols-2 gap-4 text-stone-200">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                        <span>Professionelle Naturbegleitung (8 Stunden)</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                        <span>Verpflegung (Frühstück, Mittagessen, Getränke)</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                        <span>Feuer und ehrliche Gespräche</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                        <span>Transport vor Ort</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                        <span>Reflexions-Workbook</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-emerald-400 flex-shrink-0 mt-1">✓</span>
+                        <span>Zugang zur Väter-Community nach dem Event</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="vorgespräch" class="py-20 bg-white">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6" data-aos="fade-up" data-aos-duration="800">
+                    Der nächste Schritt
+                </h2>
+                <div class="w-20 h-1 bg-emerald-600 mx-auto mb-8" data-aos="zoom-in" data-aos-duration="600"></div>
+                <p class="text-xl text-stone-600" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    Lass uns ein kurzes Vorgespräch führen. Kein Verkauf. Nur eine ehrliche Unterhaltung, 
+                    ob das Richtige für dich ist.
+                </p>
+            </div>
+
+            <form id="appForm" onsubmit="handleSubmit(event)" class="bg-white p-8 rounded-xl shadow-2xl border border-stone-200" data-aos="fade-up" data-aos-duration="800">
+                <div class="mb-6">
+                    <label for="name" class="block text-stone-900 font-semibold mb-2">Dein Name *</label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600">
+                </div>
+
+                <div class="mb-6">
+                    <label for="email" class="block text-stone-900 font-semibold mb-2">Deine E-Mail *</label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600">
+                </div>
+
+                <div class="mb-6">
+                    <label for="age" class="block text-stone-900 font-semibold mb-2">Dein Alter *</label>
+                    <input type="number" id="age" name="age" required class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600">
+                </div>
+
+                <div class="mb-6">
+                    <label for="motivation" class="block text-stone-900 font-semibold mb-2">Was treibt dich an? *</label>
+                    <textarea id="motivation" name="motivation" required rows="5" class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600" placeholder="Erzähl mir, was du durchmachst und warum du hier bist..."></textarea>
+                </div>
+
+                <div class="mb-6">
+                    <label for="challenge" class="block text-stone-900 font-semibold mb-2">Deine größte Herausforderung?</label>
+                    <textarea id="challenge" name="challenge" rows="4" class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600" placeholder="Was ist das, das dich am meisten belastet?"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-bold text-lg transition-all">
+                    Vorgespräch sichern
+                </button>
+            </form>
+
+            <div id="appSuccess" class="hidden text-center py-12">
+                <h3 class="text-2xl font-bold text-emerald-600 mb-4">✓ Danke!</h3>
+                <p class="text-lg text-stone-600">Ich melde mich in den nächsten 24 Stunden bei dir. 
+                Lass uns ein ehrliches Gespräch führen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Kontakt</h4>
+                    <a href="mailto:support@vonmann-zumann.de" class="text-stone-300 hover:text-white">support@vonmann-zumann.de</a><br>
+                    <a href="tel:+4915128982535" class="text-stone-300 hover:text-white">+49 151 28982535</a>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Social Media</h4>
+                    <a href="https://www.instagram.com/vonmannzumann.podcast" target="_blank" class="text-stone-300 hover:text-white">Instagram</a><br>
+                    <a href="https://www.vonmann-zumann.de" target="_blank" class="text-stone-300 hover:text-white">Website</a>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Rechtliches</h4>
+                    <a href="impressum.html" class="text-stone-300 hover:text-white">Impressum</a><br>
+                    <a href="datenschutz.html" class="text-stone-300 hover:text-white">Datenschutz</a><br>
+                    <a href="agb.html" class="text-stone-300 hover:text-white">AGB</a>
+                </div>
+            </div>
+            <div class="border-t border-stone-700 pt-8 text-center text-stone-400">
+                <p>&copy; 2025 MANEVOLUTION LLC | Von Mann zu Mann</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lead Magnet Modal -->
+    <div id="leadModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4">
+            <button onclick="document.getElementById('leadModal').classList.add('hidden')" class="float-right text-2xl text-stone-400 hover:text-stone-600">×</button>
+            <h3 class="text-2xl font-bold text-stone-900 mb-4">Der Kompass für Väter im Sturm</h3>
+            <form id="leadForm" onsubmit="handleLeadSubmit(event)">
+                <div class="mb-6">
+                    <label for="leadEmail" class="block text-stone-900 font-semibold mb-2">Deine E-Mail *</label>
+                    <input type="email" id="leadEmail" name="email" required class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600">
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-bold transition-all">
+                    PDF herunterladen
+                </button>
+            </form>
+            <div id="leadSuccess" class="hidden text-center py-4">
+                <p class="text-emerald-600 font-bold">✓ Danke! Dein PDF wird heruntergeladen.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out-quad',
+            once: false,
+            mirror: true
+        });
+
+        // Parallax effect on hero
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroText = document.querySelector('.hero-text');
+            if (heroText) {
+                heroText.style.opacity = Math.max(0, 1 - scrolled / 500);
+            }
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                age: document.getElementById('age').value,
+                motivation: document.getElementById('motivation').value,
+                challenge: document.getElementById('challenge').value,
+                _subject: `Neues Vorgespräch: ${document.getElementById('name').value}`,
+                _replyto: document.getElementById('email').value
+            };
+
+            fetch('https://formspree.io/f/xwpzpdbp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            }).then(r => {
+                if (r.ok) {
+                    document.getElementById('appForm').style.display = 'none';
+                    document.getElementById('appSuccess').classList.remove('hidden');
+                }
+            });
+        }
+
+        function handleLeadSubmit(e) {
+            e.preventDefault();
+            const formData = {
+                email: document.getElementById('leadEmail').value,
+                _subject: 'Lead Magnet Download',
+                _replyto: document.getElementById('leadEmail').value
+            };
+
+            fetch('https://formspree.io/f/xwpzpdbp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            }).then(r => {
+                if (r.ok) {
+                    document.getElementById('leadForm').style.display = 'none';
+                    document.getElementById('leadSuccess').classList.remove('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
