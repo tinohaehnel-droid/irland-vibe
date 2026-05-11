@@ -147,10 +147,15 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Parallax -->
-    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden pt-16 parallax-hero" style="background-image: url('hero-cliffs.jpg');">
-        <div class="absolute inset-0 bg-gradient-to-b from-stone-900/70 via-stone-900/50 to-stone-900/70"></div>
-        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center hero-text scroll-fade">
+    <!-- Hero Section with Video Background -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden pt-16">
+        <!-- Video Background -->
+        <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover" style="z-index: 1;">
+            <source src="https://videos.pexels.com/video-files/3571936/3571936-hd_1920_1080_25fps.mp4" type="video/mp4">
+            <source src="https://videos.pexels.com/video-files/3571936/3571936-hd_1920_1080_25fps.webm" type="video/webm">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-b from-stone-900/70 via-stone-900/50 to-stone-900/70" style="z-index: 2;"></div>
+        <div class="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center hero-text scroll-fade">
             <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in-up" data-aos="fade-up" data-aos-duration="1000">
                 Raus aus dem Kopf.<br/>Rein in die Natur.
             </h1>
@@ -170,7 +175,7 @@
                 </a>
             </div>
         </div>
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce" style="z-index: 20;">
             <div class="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
                 <div class="w-1 h-3 bg-white/50 rounded-full"></div>
             </div>
@@ -463,7 +468,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section with Case Studies -->
     <section id="stimmen" class="py-20 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -472,29 +477,70 @@
                 </h2>
                 <div class="w-20 h-1 bg-emerald-600 mx-auto mb-8" data-aos="zoom-in" data-aos-duration="600"></div>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-stone-50 p-8 rounded-xl border border-stone-200 transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-duration="800">
-                    <p class="text-stone-700 text-lg italic mb-6 leading-relaxed">"Ich bin mit vollem Kopf angekommen und bin mit einem klaren Herzen gegangen. 
-                    Die Natur hat mir meine Kraft zurückgegeben."</p>
-                    <div>
-                        <p class="font-bold text-stone-900">Markus, 37</p>
-                        <p class="text-sm text-stone-500">Vater von zwei Kindern, getrennt seit 2 Jahren</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Case Study 1 -->
+                <div class="bg-stone-50 rounded-xl border border-stone-200 overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-duration="800">
+                    <div class="w-full h-40 bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-5xl">
+                        👨‍💼
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-700 text-sm italic mb-4 leading-relaxed line-clamp-3">"Ich bin mit vollem Kopf angekommen und bin mit einem klaren Herzen gegangen."</p>
+                        <div>
+                            <p class="font-bold text-stone-900">Markus</p>
+                            <p class="text-sm text-stone-500">37 Jahre</p>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-stone-50 p-8 rounded-xl border border-stone-200 transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                    <p class="text-stone-700 text-lg italic mb-6 leading-relaxed">"Am Feuer mit den anderen Männern habe ich verstanden, dass ich nicht allein bin. 
-                    Das hat alles verändert."</p>
-                    <div>
-                        <p class="font-bold text-stone-900">Thomas, 39</p>
-                        <p class="text-sm text-stone-500">Vater, kämpft um die Verbindung zu seinen Kindern</p>
+                <!-- Case Study 2 -->
+                <div class="bg-stone-50 rounded-xl border border-stone-200 overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                    <div class="w-full h-40 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-5xl">
+                        👨‍🔧
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-700 text-sm italic mb-4 leading-relaxed line-clamp-3">"Am Feuer mit den anderen Männern habe ich verstanden, dass ich nicht allein bin."</p>
+                        <div>
+                            <p class="font-bold text-stone-900">Thomas</p>
+                            <p class="text-sm text-stone-500">39 Jahre</p>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-stone-50 p-8 rounded-xl border border-stone-200 transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-                    <p class="text-stone-700 text-lg italic mb-6 leading-relaxed">"Ich dachte, ich müsste stark sein. Hier habe ich gelernt, dass wahre Stärke 
-                    darin liegt, auch schwach sein zu dürfen."</p>
-                    <div>
-                        <p class="font-bold text-stone-900">Andreas, 42</p>
-                        <p class="text-sm text-stone-500">Vater und Unternehmer in Krise</p>
+                <!-- Case Study 3 -->
+                <div class="bg-stone-50 rounded-xl border border-stone-200 overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    <div class="w-full h-40 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-5xl">
+                        👨‍💼
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-700 text-sm italic mb-4 leading-relaxed line-clamp-3">"Wahre Stärke liegt darin, auch schwach sein zu dürfen."</p>
+                        <div>
+                            <p class="font-bold text-stone-900">Andreas</p>
+                            <p class="text-sm text-stone-500">42 Jahre</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Case Study 4 -->
+                <div class="bg-stone-50 rounded-xl border border-stone-200 overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+                    <div class="w-full h-40 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center text-5xl">
+                        👨
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-700 text-sm italic mb-4 leading-relaxed line-clamp-3">"Ich bin wieder mit mir selbst verbunden."</p>
+                        <div>
+                            <p class="font-bold text-stone-900">Christian</p>
+                            <p class="text-sm text-stone-500">35 Jahre</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Case Study 5 -->
+                <div class="bg-stone-50 rounded-xl border border-stone-200 overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 shadow-lg" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+                    <div class="w-full h-40 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-5xl">
+                        👨‍🎓
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-700 text-sm italic mb-4 leading-relaxed line-clamp-3">"Das war die beste Investition in mich selbst."</p>
+                        <div>
+                            <p class="font-bold text-stone-900">Stefan</p>
+                            <p class="text-sm text-stone-500">44 Jahre</p>
+                        </div>
                     </div>
                 </div>
             </div>
